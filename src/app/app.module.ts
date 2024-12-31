@@ -1,13 +1,13 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
-import { TodosComponent } from './MyComponenets/todos/todos.component';
+import { TodosModule } from './MyComponenets/todos/todos.module';
 
 @NgModule({
-  declarations: [AppComponent, TodosComponent],
-  imports: [BrowserModule, CommonModule],
+  declarations: [],
+  imports: [BrowserModule, CommonModule, TodosModule],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [],
 })
-export class AppModule {}
+export class AppModule { }

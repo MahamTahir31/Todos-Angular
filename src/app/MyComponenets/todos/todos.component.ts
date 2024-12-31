@@ -1,12 +1,27 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { NO_ERRORS_SCHEMA } from '@angular/core'; 
 
 @Component({
   selector: 'app-todos',
-  imports: [CommonModule],
-  templateUrl: '.todos.component.html',
+  standalone: false, // have to make it false explicitly
+  templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.css'],
-  schemas: [NO_ERRORS_SCHEMA]
 })
-export class TodosComponent {}
+export class TodosComponent {
+  todos: any[] = [
+    {
+      sno: 1,
+      title: "Learn Angular",
+      desc: "Need to learn Angular framework"
+    },
+    {
+      sno: 2,
+      title: "Learn TypeScript",
+      desc: "Need to learn TypeScript programming"
+    },
+    {
+      sno: 3,
+      title: "Build Project",
+      desc: "Build a project using Angular"
+    }
+  ];
+}
