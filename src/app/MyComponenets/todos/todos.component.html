@@ -1,5 +1,45 @@
-<h1 align="center">Todos App</h1>
+<h1 class="mb-4 text-center">Todos App</h1>
+<div class="container">
+  <h3>Add a Todo</h3>
+  <form class="my-3" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="title" class="form-label" >Todo Title</label>
+      <input
+        type="text"
+        [(ngModel)]="title"
+        class="form-control"
+        name="title"
+        id="title"
+        aria-describedby="emailHelp"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="desc" class="form-label">Todo description</label>
+      <input
+        type="text"
+        [(ngModel)]="desc"
+        class="form-control"
+        name="desc"
+        id="desc"
+      />
+    </div>
+    <button type="submit" class="btn btn-sm btn-primary">Add Todo</button>
+  </form>
+  <h3>Your Todos</h3>
+  <div *ngIf="this.todos.length === 0; else elseBlock">No Todos to Display </div>
+  <ng-template #elseBlock>
+    <div *ngFor="let todo of todos; index as i">
+      <h5 [ngClass] = "{'strike': todo.active}">{{ todo.title }}</h5>
+      <p [ngClass] = "{'strike': todo.active}">{{ todo.desc }}</p>
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="todo{{i}}" (click)="onCheckboxClick(todo)" [checked] = "todo.active">
+        <label class="form-check-label" for="todo{{i}}">Done</label>
+      </div>
+      <button class="btn btn-sm btn-danger" (click)="onClick(todo)">
+        delete
+      </button>
+    </div>
 
-<ul *ngFor="let todo of todos">
-  <li>{{ todo.sno }} - {{ todo.title }} - {{ todo.desc }}</li>
-</ul>
+  </ng-template>
+
+</div>
